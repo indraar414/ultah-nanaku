@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Camping Date — Nanaku 🏕️❤️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh; overflow:hidden; color:#fff;
+  background:linear-gradient(180deg,#11152f 0%,#25335c 55%,#111827 100%);
+}
+.stars,.stars:before,.stars:after{
+  position:fixed; inset:0; content:""; pointer-events:none;
+  background-image:
+    radial-gradient(circle,#fff 1px,transparent 1.5px),
+    radial-gradient(circle,#fff 1px,transparent 1.5px);
+  background-size:95px 95px,137px 137px;
+  background-position:20px 15px,60px 50px;
+  opacity:.65;
+}
+.stars:before{transform:translate(35px,70px);opacity:.35}
+.stars:after{transform:translate(-30px,-40px);opacity:.25}
+
+.app{
+  position:relative; z-index:2; width:100%; min-height:100vh;
+  display:flex; align-items:center; justify-content:center; padding:20px;
+}
+.card{
+  width:min(430px,100%); max-height:92vh; overflow:auto;
+  background:rgba(17,24,39,.78); backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.15); border-radius:28px;
+  padding:30px 24px; text-align:center;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+.emoji{font-size:62px; animation:bob 2s ease-in-out infinite}
+h1{font-size:32px; margin:10px 0 8px}
+h2{font-size:25px;margin-bottom:10px}
+p{color:#B4C5DB;line-height:1.6}
+.highlight{color:#ffd166;font-weight:800}
+.datebox{
+  margin:20px 0;padding:15px;border-radius:18px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.1)
+}
+.countdown{display:flex;justify-content:center;gap:8px;margin:15px 0 22px}
+.time{
+  min-width:65px;padding:10px 5px;border-radius:14px;
+  background:rgba(255,255,255,.1)
+}
+.time b{display:block;font-size:24px}.time small{color:#aebbd8}
+button{
+  border:0;border-radius:999px;padding:14px 22px;font-size:16px;
+  font-weight:800;cursor:pointer;transition:.2s;
+}
+.yes{background:#031c67;color:#fff;box-shadow:0 8px 22px rgba(255, 255, 255, 0.3)}
+.no{background:#ff0000;color:#ffffff;position:relative}
+.buttons{display:flex;justify-content:center;gap:10px;margin-top:20px}
+button:active{transform:scale(.94)}
+.hidden{display:none!important}
+.fire{font-size:45px;animation:flicker .7s infinite alternate}
+.final{
+  animation:pop .5s ease;
+}
+.confetti{
+  position:fixed; width:8px;height:14px;top:-20px;z-index:10;
+  animation:fall linear forwards; pointer-events:none;
+}
+.signature{margin-top:18px;font-size:14px;color:#aebbd8}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes flicker{to{transform:scale(1.08) rotate(-3deg);filter:brightness(1.3)}}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<div class="app">
+  <main class="card" id="main">
+    <section id="invite">
+      <div class="emoji">🏕️</div>
+      <p class="highlight">💌 SECRET INVITATION 💌</p>
+      <h1>DEAR MY BELOVED GIRL IN THE WORLD</h1>
+      <h1>VENA OKTAVIANI</h1>
+      <p>I HAVE A SIMPLE PLAN FOR US</p>
+      <p><b>AND YOU MUST FOLLOW THIS PLAN</b>🤪</p>
+
+      <div class="datebox">
+        <div style="font-size:34px">🎂</div>
+        <h2>BIRTHDAY TRIP</h2>
+        <p>BECAUSE SOMEONE I LOVE VERY MUCH HAS A BIRTHDAY ON...</p>
+        <p class="highlight">17 OCTOBER 2026</p>
+      </div>
+
+      <p>LET'S CELEBRATE TOGETHER IN A SIMPLY WAY</p>
+      <p style="font-size:22px;margin-top:6px"><b>🏕️ CAMPING 🏕️</b></p>
+
+      <div class="countdown">
+        <div class="time"><b id="d">0</b><small>DAY</small></div>
+        <div class="time"><b id="h">0</b><small>HOUR</small></div>
+        <div class="time"><b id="m">0</b><small>MINUTE</small></div>
+        <div class="time"><b id="s">0</b><small>SECOND</small></div>
+      </div>
+
+      <p>SO, THERE IS ONLY ONE QUESTION</p>
+      <h2 style="margin-top:8px">DO YOU WANT TO GO ON A BIRTHDAY TRIP WITH ME BABE?👉👈</h2>
+
+      <div class="buttons">
+        <button class="yes" onclick="accept()">LET'S GOOO</button>
+        <button class="no" id="noBtn">NOOO WAY</button>
+      </div>
+      <div class="signature">P.S. THE "NO WAY" BUTTON CAN'T BE CLICKED 😝</div>
+    </section>
+
+    <section id="final" class="hidden final">
+      <div class="emoji">🥳</div>
+      <div class="fire">WOOHOOO!!!</div>
+      <h1>HAPPY BIRTHDAY MY SWEETHEART</h1>
+      <h2>I FEEL SO LUCKY TO CALL YOU MINE BABE.</h2>
+      <p>
+        ON YOUR SPECIAL DAY, I PRAY THAT GOD BLESSES YOU WITH GOOD HEALTH, INFINITE HAPPINESS AND SUCCESS EVERYTHING YOU DO.
+      </p>
+      <p style="margin-top:12px">
+        <span class="highlight">MAY OUR LOVE GET STRONGER EVERY DAY, MAY THIS YEAR WE CAN GET MARRIED AND WE CAN CELEBRATE MORE BIRTHDAYS TOGETHER.
+        </span>
+      </p>
+      <p style="font-size:23px;margin:16px 0"><b>I REALLY LOVE YOU SO FREAKING MUCH DARLING</b></p>
+      <p>
+        IT MAY NOT BE THAT LUXURIOUS, BUT THE IMPORTANT THING IS YOU, ME, AND THE NIGHT SKY CELEBRATING YOUR BIRTHDAY.
+      </p>
+      <p style="margin-top:15px"><b>SEE U ON OUR LITTLE ADVENTURE, NANAKU!!!🏕️✨</b></p>
+      <div class="signature">LET'S SPEND SOME TIME TOGETHER</div>
+    </section>
+  </main>
+</div>
+
+<script>
+const target = new Date("2026-10-17T00:00:00+07:00").getTime();
+
+function countdown(){
+  let diff = target - Date.now();
+  if(diff < 0) diff = 0;
+  const day = 86400000, hour=3600000, min=60000;
+  document.getElementById("d").textContent = Math.floor(diff/day);
+  document.getElementById("h").textContent = Math.floor(diff%day/hour);
+  document.getElementById("m").textContent = Math.floor(diff%hour/min);
+  document.getElementById("s").textContent = Math.floor(diff%min/1000);
+}
+countdown(); setInterval(countdown,1000);
+
+const noBtn = document.getElementById("noBtn");
+function moveNo(){
+  const card = document.querySelector(".card").getBoundingClientRect();
+  const maxX = Math.max(20, card.width-120);
+  const maxY = Math.max(20, card.height-100);
+  noBtn.style.position="absolute";
+  noBtn.style.left=(Math.random()*maxX)+"px";
+  noBtn.style.top=(Math.random()*maxY)+"px";
+}
+noBtn.addEventListener("mouseenter",moveNo);
+noBtn.addEventListener("touchstart",(e)=>{e.preventDefault();moveNo()});
+
+function accept(){
+  document.getElementById("invite").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+  for(let i=0;i<90;i++) setTimeout(makeConfetti,i*18);
+}
+function makeConfetti(){
+  const c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDuration=(2+Math.random()*3)+"s";
+  c.style.transform=`rotate(${Math.random()*360}deg)`;
+  c.style.background=["#ff6b9a","#ffd166","#7bdff2","#cdb4db","#ffffff"][Math.floor(Math.random()*5)];
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),5500);
+}
+</script>
+</body>
+</html>
